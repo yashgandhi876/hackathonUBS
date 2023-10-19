@@ -6,44 +6,56 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { Chip, IconButton } from '@mui/material';
+import { Card, Chip, IconButton } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 const Detail = ({project}) => {
-    console.log(project.contributors)
     return(<div className='h-full'>
         <React.Fragment>
-        <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }} className='w-full'>
-          <Typography
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            sx={{ flex: 1 }}
-          >
-            Project Name
-          </Typography>
-        </Toolbar>
+        
     </React.Fragment>
-    <Grid container md={11} className='bg-[#9DB2BF] h-[150px] rounded m-auto'>
-          <Grid item md={12}>
-              <h1 className='text-center text-2xl mt-2'>
+    <Card className='ml-2 mr-2 pl-2 pr-2 h-full'>
+    <Grid container className=' rounded m-auto'>
+          <Grid item md={7} className='bg-[#e0ebeb]  rounded p-10 '>
+              <h1 className='text-2xl mt-2 font-medium'>
                 {project.title}
               </h1>
-              <h2 className='text-center text-lg mt-2'>
-                {project.description}
+              <br/>
+              <h2 className=' mt-2 break-words text-base'>
+                {project.description} lorem ipssdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
               </h2>
-              <div className='text-center mt-2'>
-              <Link variant="subtitle1" href="#" className='text-center text-lg mt-2'>
+              <br/>
+              <div className='mt-2'>
+              {/* <Link variant="subtitle1" href="#" className='text-center text-lg mt-2'>
                 {project.linkText}
-              </Link>
+              </Link> */}
+              <Grid container>
+                <Grid item md={9}>
+                <div className=''> 
+                    {project.tags.map((tag) => {
+                        return(
+                            <Chip label={tag} color="primary" className="m-2 w-[100px]"/>
+                        )
+                    })
+
+                    }
+                </div>
+                </Grid>
+                <Grid item md={3} >
+               <button
+						type="button"
+						className="mt-10 ml-7 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+					>
+						Gitlab link
+					</button>
+                    </Grid>
+              </Grid>
+
               </div>
           </Grid>
-    </Grid>
-    <div className="flex w-full m-2 h-[300px]">
-        <div className="w-[40%] bg-[#DDE6ED] h-full ml-[5%] rounded">
-            <div className='w-[80%] text-center text-2xl bg-[#033f63] rounded m-auto my-2 text-white border-black border-1 p-1'>
+          <Grid md={5}>
+          <div className=" bg-[#DDE6ED] h-full ml-[5%] rounded">
+            <div className=' text-center text-2xl bg-[#033f63] rounded m-auto text-white border-black border-1 p-1'>
                 Contributors
             </div>
             <div className='m-auto w-[60%] max-h-[200px] overflow-auto'>
@@ -61,6 +73,11 @@ const Detail = ({project}) => {
                 </List>
             </div>
         </div>
+          </Grid>
+    </Grid>
+    
+    {/* <div className="flex w-full m-2 h-[300px]">
+        
         <div className="w-[40%] bg-[#DDE6ED] h-full ml-[5%] rounded">
             <div className='w-[80%] text-center text-2xl bg-[#033f63] rounded m-auto my-2 text-white border-black border-1 p-1'>
                 Tags
@@ -75,7 +92,9 @@ const Detail = ({project}) => {
                 }
             </div>
         </div>
-    </div>
+    </div> */}
+    </Card>
+
         </div>
     )
 }
