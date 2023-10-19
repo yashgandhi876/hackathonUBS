@@ -29,12 +29,6 @@ export default function AddProject() {
 
   const onCancel = () => setProjectDetails(defaultState);
 
-	const options = [
-		{ value: "Chocolate", label: "Chocolate" },
-		{ value: "Strawberry", label: "Strawberry" },
-		{ value: "Vanilla", label: "Vanilla" },
-	];
-
 	const onChangeInput = (event) =>
 		setProjectDetails((oldProjectDetails) => ({
 			...oldProjectDetails,
@@ -42,7 +36,13 @@ export default function AddProject() {
 		}));
 
 	const onSubmit = () => {
-		axios.post("http://localhost:8080/add-project", projectDetails);
+		axios.post("http://localhost:8080/add-project", 
+		{
+			...projectDetails,
+			tags: projectDetails.tags.map(tag => ({name: tag?.label})),
+			contributors: projectDetails.contributors.map(contributor => ({name: contributor?.label, email: contributor?.value}))
+		
+		}).then(() => setProjectDetails(defaultState));
 	};
 
 	const onDropDownChange = (event, { name, option, action, removedValue }) => {

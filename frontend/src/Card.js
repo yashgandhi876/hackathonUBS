@@ -3,26 +3,10 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import './Card.css';
-
-
-export function tagColors(tag){
-   
-    switch(tag){
-        case "javascript": return "warning";
-        case "react": return "primary";
-        case "kotlin": return "secondary"
-        case "java": return "info";
-        case "angular": return "error";
-        case "mongoDB": return "success";
-        case "node": return "success";
-        default: return "default"
-    }
-}
 
 export default function ProjectCard(props) {
     
@@ -40,7 +24,7 @@ export default function ProjectCard(props) {
           <Stack direction="row" className='flex-wrap' spacing={1}>
             {
                 props.project.tags.map((tag, index)=>{
-                    return <Chip label={tag.name} style={{marginTop:10}} onClick={()=>{}} color={`${index % 2 == 1 ? 'error': 'default'}`}/>   
+                    return <Chip label={tag.name} style={{marginTop:10}} onClick={()=>{}} color={`${index % 2 === 1 ? 'error': 'default'}`}/>   
                 })
             }
          </Stack>

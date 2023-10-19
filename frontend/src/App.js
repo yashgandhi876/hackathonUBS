@@ -2,13 +2,20 @@ import './App.css';
 import AddProject from './AddProject';
 import Dashboard from './Dashboard';
 import Header from "./Header";
-import { Card } from '@material-ui/core';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from './About';
 
 function App() {
   return (
   <div className="app">
-    <Header/>
-    <Dashboard/>
+    <BrowserRouter>
+      <Header/>
+      <Routes> 
+          <Route exact path="/" element={<Dashboard />} /> 
+          <Route exact path="/about" element={<About />} /> 
+          <Route exact path="/add-project" element={<AddProject />} /> 
+      </Routes>
+    </BrowserRouter>
   </div>
   );
 }
