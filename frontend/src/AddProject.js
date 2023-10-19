@@ -18,10 +18,13 @@ export default function AddProject() {
 	const [tags, setTags] = useState([]);
 	const [contributors, setContributors] = useState([]);
 
-	// useEffect(async () => {
-	//     await axios.get("/tags").then( res => setTags(res.data));
-	//     await axios.get("/contributors").then( res => setContributors(res.data));
-	// }, [])
+
+	const fetchData = async () => {
+		await axios.get("http://localhost:8080/get-tags").then( res => setTags(res.data.map(d=>d.name)));
+	    await axios.get("http://localhost:8080/get-contributors").then( res => setContributors(res.data));
+	}
+
+	useEffect(() => {fetchData()}, [])
 
 
   const onCancel = () => setProjectDetails(defaultState);
@@ -39,7 +42,7 @@ export default function AddProject() {
 		}));
 
 	const onSubmit = () => {
-		axios.post("/add-project", projectDetails);
+		axios.post("http://localhost:8080/add-project", projectDetails);
 	};
 
 	const onDropDownChange = (event, { name, option, action, removedValue }) => {
@@ -100,8 +103,7 @@ export default function AddProject() {
 						name="tags"
 						value={projectDetails.tags}
 						onChange={onDropDownChange}
-						// options={tags.map(tag => ({label: tag, value: tag}))}
-						options={options}
+						options={tags.map(tag => ({label: tag, value: tag}))}
 						className="basic-multi-select field"
 						classNamePrefix="Tags"
 					/>
@@ -113,8 +115,7 @@ export default function AddProject() {
 						name="contributors"
 						value={projectDetails.contributors}
 						onChange={onDropDownChange}
-						// options={contributors.map(contributor => ({label: contributor.email, value: contributor.name}))}
-						options={options}
+						options={contributors.map(contributor => ({label: contributor.name, value: contributor.email}))}
 						className="basic-multi-select field"
 						classNamePrefix="Contributors"
 					/>

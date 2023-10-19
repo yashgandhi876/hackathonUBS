@@ -12,4 +12,5 @@ public class Project {
     String desc;
     List<Tag> tags;
     List<Contributor> contributors;
+    String repoLink;
 }

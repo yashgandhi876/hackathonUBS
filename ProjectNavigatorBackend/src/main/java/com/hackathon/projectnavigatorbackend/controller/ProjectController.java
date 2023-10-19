@@ -15,17 +15,20 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/add-project")
     private HttpStatus saveProject(@RequestBody Project project){
             projectService.addProject(project);
             return HttpStatus.OK;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get-projects")
     private List<Project> getProjects(){
         return projectService.getAllProjects();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get-projects/{tagName}")
     private List<Project> getProjectsByTagName(@PathVariable String tagName){
         return projectService.getAllProjectsByTagName(tagName);
