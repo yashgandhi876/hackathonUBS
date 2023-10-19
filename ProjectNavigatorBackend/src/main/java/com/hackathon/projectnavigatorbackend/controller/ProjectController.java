@@ -5,10 +5,9 @@ import com.hackathon.projectnavigatorbackend.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RestController
@@ -22,4 +21,13 @@ public class ProjectController {
             return HttpStatus.OK;
     }
 
+    @GetMapping("/get-projects")
+    private List<Project> getProjects(){
+        return projectService.getAllProjects();
+    }
+
+    @GetMapping("/get-projects/{tagName}")
+    private List<Project> getProjectsByTagName(@PathVariable String tagName){
+        return projectService.getAllProjectsByTagName(tagName);
+    }
 }
