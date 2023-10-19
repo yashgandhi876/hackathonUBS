@@ -62,7 +62,7 @@ export default function AddProject() {
 	return (
 		<div className="container">
 			<div className="formContainer">
-				<h1 className="mb-8 text-4xl font-extrabold leading-none ">Register Your Project</h1>
+				<h1 className="mb-8 text-4xl font-extrabold leading-none heading text-gray-700">Add Project</h1>
 				<div className="fields">
 					<TextField
 						id="standard-basic"
@@ -104,26 +104,42 @@ export default function AddProject() {
 						value={projectDetails.tags}
 						onChange={onDropDownChange}
 						options={tags.map(tag => ({label: tag, value: tag}))}
-						className="basic-multi-select field"
+						className="basic-multi-select field selectField"
 						classNamePrefix="Tags"
+						styles={{
+							control: base => ({
+							  ...base,
+							  border: 0,
+							  // This line disable the blue border
+							  boxShadow: "none"
+							})
+						  }}
 					/>
 				</div>
 				<div className="fields">
 					<label htmlFor=""> Contributors</label>
 					<Select
 						isMulti
+						styles={{
+							control: base => ({
+							  ...base,
+							  border: 0,
+							  // This line disable the blue border
+							  boxShadow: "none"
+							})
+						  }}
 						name="contributors"
 						value={projectDetails.contributors}
 						onChange={onDropDownChange}
 						options={contributors.map(contributor => ({label: contributor.name, value: contributor.email}))}
-						className="basic-multi-select field"
+						className="basic-multi-select field selectField"
 						classNamePrefix="Contributors"
 					/>
 				</div>
 				<div className="buttons">
 					<button
 						type="button"
-						className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+						className="submitBtn text-white  focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
 						onClick={onSubmit}
 					>
 						Submit
@@ -131,7 +147,7 @@ export default function AddProject() {
 					<button
 						type="button"
             onClick={onCancel}
-						className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+						className="cancelBtn py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
 					>
 						Cancel
 					</button>

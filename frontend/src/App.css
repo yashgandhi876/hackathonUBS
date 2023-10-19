@@ -4,7 +4,11 @@
 }
 
 .formContainer{
-    width: 30%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 20px auto;
 }
 
@@ -25,4 +29,98 @@
 button{
     margin: 10px;
     width: 100px;
+}
+
+.heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+
+.selectField{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    box-shadow: 'none';
+}
+
+.submitBtn{
+    background-Color: rgb(230,0,0);
+}
+
+.cancelBtn{
+    background-color: rgb(255,254,254);
+    color: black;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+.upperNav{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+.lowerNav{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    border-bottom: 0.0001em solid rgb(128,128,128, 1);
+}
+
+.logo{
+    width: 85px;
+    height: 85px;
+    margin-right: 10px;
+}
+
+.logoName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    margin-left: 10px;
+}
+
+.navlink{
+    margin: 0 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.navlink {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+
+.navlink::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background:  rgb(230,0,0);
+    transition: width .3s;
+}
+
+.navlink:hover::after {
+    width: 100%;
 }
