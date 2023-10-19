@@ -1,45 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import "./App.css"
 import Select from "react-select";
+import axios from "axios";
 
 export default function AddProject() {
 
-  const [projectDetails, setProjectDetails] = useState({
+  const defaultState = {
 		name: "",
 		desc: "",
 		repoLink: "",
 		tags: [],
 		contributors: [],
-  });
+  };
+	const [projectDetails, setProjectDetails] = useState(defaultState);
 
-  const options = [
+	const [tags, setTags] = useState([]);
+	const [contributors, setContributors] = useState([]);
+
+	// useEffect(async () => {
+	//     await axios.get("/tags").then( res => setTags(res.data));
+	//     await axios.get("/contributors").then( res => setContributors(res.data));
+	// }, [])
+
+
+  const onCancel = () => setProjectDetails(defaultState);
+
+	const options = [
 		{ value: "Chocolate", label: "Chocolate" },
 		{ value: "Strawberry", label: "Strawberry" },
 		{ value: "Vanilla", label: "Vanilla" },
-  ];
+	];
 
-  const onChangeInput = (event) =>
-    setProjectDetails((oldProjectDetails) => ({
-        ...oldProjectDetails,
-        [event.target.name]: event.target.value
-      }))
-
-  const onDropDownChange = (event, {name, option, action, removedValue}) =>{
-    if (action === "select-option"){
-      return setProjectDetails((oldProjectDetails) => ({
+	const onChangeInput = (event) =>
+		setProjectDetails((oldProjectDetails) => ({
 			...oldProjectDetails,
-			[name]: [...oldProjectDetails[name], option],
+			[event.target.name]: event.target.value,
 		}));
-  }else{
-    return setProjectDetails((oldProjectDetails) => ({
-      ...oldProjectDetails,
-      [name]: oldProjectDetails[name].filter(e=>  e?.value !== removedValue?.value),
-    }));
-  }
-    }
 
-    return (
+	const onSubmit = () => {
+		axios.post("/add-project", projectDetails);
+	};
+
+	const onDropDownChange = (event, { name, option, action, removedValue }) => {
+		if (action === "select-option") {
+			return setProjectDetails((oldProjectDetails) => ({
+				...oldProjectDetails,
+				[name]: [...oldProjectDetails[name], option],
+			}));
+		} else {
+			return setProjectDetails((oldProjectDetails) => ({
+				...oldProjectDetails,
+				[name]: oldProjectDetails[name].filter((e) => e?.value !== removedValue?.value),
+			}));
+		}
+	};
+
+	return (
 		<div className="container">
 			<div className="formContainer">
 				<h1 className="mb-8 text-4xl font-extrabold leading-none ">Register Your Project</h1>
@@ -83,6 +100,7 @@ export default function AddProject() {
 						name="tags"
 						value={projectDetails.tags}
 						onChange={onDropDownChange}
+						// options={tags.map(tag => ({label: tag, value: tag}))}
 						options={options}
 						className="basic-multi-select field"
 						classNamePrefix="Tags"
@@ -95,6 +113,7 @@ export default function AddProject() {
 						name="contributors"
 						value={projectDetails.contributors}
 						onChange={onDropDownChange}
+						// options={contributors.map(contributor => ({label: contributor.email, value: contributor.name}))}
 						options={options}
 						className="basic-multi-select field"
 						classNamePrefix="Contributors"
@@ -104,14 +123,13 @@ export default function AddProject() {
 					<button
 						type="button"
 						className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-						onClick={() => {
-							console.log(projectDetails);
-						}}
+						onClick={onSubmit}
 					>
 						Submit
 					</button>
 					<button
 						type="button"
+            onClick={onCancel}
 						className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
 					>
 						Cancel
@@ -119,5 +137,5 @@ export default function AddProject() {
 				</div>
 			</div>
 		</div>
-    );
+	);
 }
