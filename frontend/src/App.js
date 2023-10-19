@@ -1,10 +1,15 @@
 import './App.css';
+import Dashboard from './Dashboard';
+import Header  from './Header';
+import AddProject from './AddProject';
 
 function App() {
   return (
-    <div className="App">
-      hi
-    </div>
+  <div className="app">
+    <Header/>
+    <Dashboard/>
+    <AddProject/>
+  </div>
   );
 }
 
