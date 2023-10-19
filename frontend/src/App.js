@@ -1,10 +1,11 @@
 import './App.css';
 import AddProject from './AddProject';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
   <div className="app">
-    <AddProject/>
+    <Dashboard/>
   </div>
   );
 }
