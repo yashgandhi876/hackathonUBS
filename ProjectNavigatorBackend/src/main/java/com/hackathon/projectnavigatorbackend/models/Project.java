@@ -8,7 +8,6 @@ import java.util.List;
 @Document
 @Data
 public class Project {
-    String id;
     String name;
     String desc;
     List<Tag> tags;
