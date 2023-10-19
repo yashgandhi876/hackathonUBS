@@ -14,9 +14,5 @@ public interface ProjectRepository extends MongoRepository<Project, String> {
 
     @Query(value = "{'tags.name' : ?0}")
     public List<Project> findByTagName(String tagNames);
-
-
-
-
 }
 
