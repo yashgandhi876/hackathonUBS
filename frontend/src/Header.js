@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { NavLink } from "react-router-dom"; 
 import "./App.css"
 
 export default function Header() {
@@ -12,9 +12,14 @@ export default function Header() {
         </div>
       </div>
       <div className="lowerNav">
-        <p className="navlink"> Project Explorer </p>
-        <p className="addProjectBtn navlink"> Add Project</p>
-        <p className="navlink">About Us</p>
+      
+        <p className="navlink"> <NavLink to="/"> Project Explorer </NavLink>  </p>
+        <p className="addProjectBtn navlink"> <NavLink to="/add-project"> 
+                             Add Project 
+                        </NavLink></p>
+        <p className="navlink"> <NavLink to="/about"> 
+                            About Us 
+                        </NavLink> </p>
       </div>
     </div>
     );
