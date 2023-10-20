@@ -18,7 +18,7 @@ export default function Dashboard() {
     return (
 		<div className="dashboard">
       <div className="searchBar">
-        <input className="searchInput" placeholder="Search tags, projects, description, etc." type="text" style={{border: '1px solid black'}} value={search} onChange={(event)=> setSearch(event.target.value)} />
+        <input className="searchInput" placeholder="Search tags" type="text" style={{border: '1px solid black'}} value={search} onChange={(event)=> setSearch(event.target.value)} />
       </div>
       <div className="grid gap-3 grid-cols-3 flex-wrap">
       {
