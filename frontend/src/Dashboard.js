@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Dashboard.css"
 
 export default function Dashboard() {
-  
+
   const [projects, setProjects] = useState([]);
   const [filterProjects, setFilterProjects] = useState([]);
   const [search, setSearch] = useState("");
@@ -14,7 +14,7 @@ export default function Dashboard() {
   useEffect(() => {fetchData()}, [])
 
   useEffect(() => setFilterProjects(projects.filter(project => project.tags.some(tag => tag.name.includes(search)))), [search])
-  
+
     return (
 		<div className="dashboard">
       <div className="searchBar">
@@ -25,8 +25,8 @@ export default function Dashboard() {
         filterProjects.map(project=>{
           return <ProjectCard project = {project} />
         })
-      } 
-       </div>    
+      }
+       </div>
 		</div>
     );
 }
