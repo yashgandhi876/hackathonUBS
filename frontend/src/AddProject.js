@@ -10,6 +10,8 @@ export default function AddProject() {
 		name: "",
 		desc: "",
 		repoLink: "",
+		owner: "",
+		dl:"",
 		tags: [],
 		contributors: [],
   };
@@ -97,6 +99,28 @@ export default function AddProject() {
 					/>
 				</div>
 				<div className="fields">
+					<TextField
+						id="standard-basic"
+						name="owner"
+						className="field"
+						label="Project Owner"
+						value={projectDetails.owner}
+						onChange={onChangeInput}
+						variant="standard"
+					/>
+				</div>
+				<div className="fields">
+					<TextField
+						id="standard-basic"
+						name="dl"
+						className="field"
+						label="Distrubution List"
+						value={projectDetails.dl}
+						onChange={onChangeInput}
+						variant="standard"
+					/>
+				</div>
+				<div className="fields">
 					<label htmlFor=""> Tags</label>
 					<Select
 						isMulti
@@ -110,7 +134,6 @@ export default function AddProject() {
 							control: base => ({
 							  ...base,
 							  border: 0,
-							  // This line disable the blue border
 							  boxShadow: "none"
 							})
 						  }}
@@ -124,7 +147,6 @@ export default function AddProject() {
 							control: base => ({
 							  ...base,
 							  border: 0,
-							  // This line disable the blue border
 							  boxShadow: "none"
 							})
 						  }}

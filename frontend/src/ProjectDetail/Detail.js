@@ -17,9 +17,6 @@ const Detail = () => {
     const {project} = state;
     console.log(state);
     return(<div className='h-full'>
-            <React.Fragment>
-
-            </React.Fragment>
             <Card className='ml-2 mr-2 pl-2 pr-2 mt-10 pt-10 pl-10'>
                 <Grid container className=' rounded m-auto'>
                     <Grid item md={7} className='bg-[#e0ebeb]  rounded p-10 '>
@@ -30,11 +27,14 @@ const Detail = () => {
                         <h2 className=' mt-2 break-words text-base'>
                             {project.desc}
                         </h2>
+                        <h2 className=' mt-2 break-words text-base'>
+                            {project.owner}
+                        </h2>
+                        <h2 className=' mt-2 break-words text-base'>
+                            {project.dl}
+                        </h2>
                         <br/>
                         <div className='mt-2'>
-                            {/* <Link variant="subtitle1" href="#" className='text-center text-lg mt-2'>
-                {project.linkText}
-              </Link> */}
                             <h2 className=' mt-2 break-words text-base font-medium'>
                                 Tags
                             </h2>
