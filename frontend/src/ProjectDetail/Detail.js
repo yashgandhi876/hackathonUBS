@@ -25,13 +25,13 @@ const Detail = () => {
                         </h1>
                         <br/>
                         <h2 className=' mt-2 break-words text-base'>
-                            {project.desc}
+                            Description - {project.desc}
                         </h2>
                         <h2 className=' mt-2 break-words text-base'>
-                            {project.owner}
+                            Owner - {project.owner}
                         </h2>
                         <h2 className=' mt-2 break-words text-base'>
-                            {project.dl}
+                            DL - {project.dl}
                         </h2>
                         <br/>
                         <div className='mt-2'>
