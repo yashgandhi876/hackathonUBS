@@ -1,6 +1,10 @@
 import './App.css';
 import Detail from './ProjectDetail/Detail';
 import AddProject from './AddProject';
+import Header from './Header';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import About from "./About";
 
 const project1 = {
   title:'DPB-UI',
