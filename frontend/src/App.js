@@ -1,7 +1,6 @@
 import './App.css';
 import Detail from './ProjectDetail/Detail';
 import AddProject from './AddProject';
-import About from './About';
 
 const project1 = {
   title:'DPB-UI',
@@ -26,8 +25,16 @@ const project1 = {
 function App() {
   return (
       <div className="app">
-       <About/>
-      </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/add-project" element={<AddProject />} />
+          <Route exact path="/show-project" element={<Detail project={project1}/>} />
+      </Routes>
+    </BrowserRouter>
+  </div>
   );
 }
 export default App;
