@@ -27,4 +27,11 @@ public class TagController {
     private List<Tag> getTags() {
         return tagService.getAllTags();
     }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/get-tags-count")
+    private int getTagsCount() {
+        return tagService.getAllTags().size();
+    }
 }

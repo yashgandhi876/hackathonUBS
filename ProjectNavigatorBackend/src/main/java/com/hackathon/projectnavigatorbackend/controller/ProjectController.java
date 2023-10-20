@@ -33,4 +33,10 @@ public class ProjectController {
     private List<Project> getProjectsByTagName(@PathVariable String tagName){
         return projectService.getAllProjectsByTagName(tagName);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/get-projects-count")
+    private int getProjectsCount(){
+        return projectService.getAllProjects().size();
+    }
 }
