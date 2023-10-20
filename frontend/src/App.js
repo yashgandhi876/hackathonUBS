@@ -1,6 +1,10 @@
 import './App.css';
 import Detail from './ProjectDetail/Detail';
 import AddProject from './AddProject';
+import Header from "./Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./About";
+import Dashboard from "./Dashboard"
 
 const project1 = {
   title:'DPB-UI',
@@ -22,11 +26,20 @@ const project1 = {
 }
 
 
+
 function App() {
   return (
       <div className="app">
-        <Detail project={project1}/>
-      </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/add-project" element={<AddProject />} />
+          <Route exact path="/show-project" element={<Detail project={project1}/>} />
+      </Routes>
+    </BrowserRouter>
+  </div>
   );
 }
 export default App;

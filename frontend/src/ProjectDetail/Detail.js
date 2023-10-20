@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import {Card, Chip, IconButton, Button, Avatar} from '@mui/material';
+import {Card, Chip, IconButton, Button, Avatar, Divider} from '@mui/material';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import {Person} from "@mui/icons-material";
 
@@ -15,7 +16,7 @@ const Detail = ({project}) => {
             <React.Fragment>
 
             </React.Fragment>
-            <Card className='ml-2 mr-2 pl-2 pr-2 h-96 mt-10 pt-10 pl-10'>
+            <Card className='ml-2 mr-2 pl-2 pr-2 mt-10 pt-10 pl-10'>
                 <Grid container className=' rounded m-auto'>
                     <Grid item md={7} className='bg-[#e0ebeb]  rounded p-10 '>
                         <h1 className='text-2xl mt-2 font-medium'>
@@ -36,9 +37,9 @@ const Detail = ({project}) => {
                             <Grid container>
                                 <Grid item md={9}>
                                     <div className=''>
-                                        {project.tags.map((tag) => {
+                                        {project.tags.map((tag,i) => {
                                             return(
-                                                <Chip label={tag} color="error" className="m-2 w-[100px]"/>
+                                                <Chip label={tag} color={`${i % 2 === 1 ?'default':'error'}`} className="m-2 w-[100px]"/>
                                             )
                                         })
 
@@ -61,18 +62,46 @@ const Detail = ({project}) => {
                     </Grid>
                     <Grid md={5}>
                         <div className="  h-full ml-[5%]">
-                            <div className=' text-center text-2xl m-auto border-black border-1 p-1 font-medium'>
+                            <div className=' text-2xl m-auto border-black border-1 p-1 font-medium'>
                                 Contributors
                             </div>
-                            <div className='m-auto w-[60%] max-h-[200px] overflow-auto'>
-                                <List dense sx={{ width: '80%'}} className='max-h-full overflow-auto'>
+                            <div className='m-auto'>
+                                <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} className='max-h-full'>
                                     {project.contributors.map((name)=>{ return(
-                                        <ListItem
-                                            key={name}
-                                        >
-                                            <Avatar>H</Avatar>
-                                            <ListItemText id={name} primary={name} className='ml-1' />
-                                        </ListItem>
+                                        
+                                        <ListItem alignItems="flex-start">
+                                        <ListItemAvatar>
+                                          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                          primary={<React.Fragment>
+                                            <Typography
+                                              sx={{ display: 'inline' }}
+                                              component="span"
+                                              variant="body2"
+                                              color="text.primary"
+                                            >
+                                              <b>{name}</b>
+                                            </Typography>
+                                          </React.Fragment>}
+                                          secondary={
+                                            <React.Fragment>
+                                              <Typography
+                                                sx={{ display: 'inline' }}
+                                                component="span"
+                                                variant="body2"
+                                                color="text.primary"
+                                              >
+                                                AVP, Client Channel
+                                              </Typography>
+                                              {" -- first.last@ubs.com"}
+                                            </React.Fragment>
+                                          }
+                                        />
+
+                                      </ListItem>
+
+
                                     )})}
                                 </List>
                             </div>
