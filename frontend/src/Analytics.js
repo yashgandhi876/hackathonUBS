@@ -2,8 +2,34 @@ import {useState, useEffect} from "react";
 import "./Analytics.css"
 import CountUp from 'react-countup';
 import Chart from 'react-google-charts';
+import axios from "axios";
 
 export default function Analytics() {
+
+
+  const [tagCount, setTagCount] = useState(0);
+  const [projectCount, setProjectCount] = useState(0);
+  const [contributorsCount, setContributorsCount] = useState(0);
+
+
+  const fetchData = async () => {
+    await axios.get("http://localhost:8080/get-tags-count").then((res) => {
+      setTagCount(res.data);
+    })
+
+    await axios.get("http://localhost:8080/get-projects-count").then((res) => {
+      setProjectCount(res.data);
+    })
+
+    await axios.get("http://localhost:8080/get-contributors-count").then((res) => {
+      setContributorsCount(res.data);
+    })
+  }
+
+  useEffect(() => {
+    fetchData()
+  })
+
 
   const data = [
     ["Task", "Hours per Day"],
@@ -24,19 +50,19 @@ export default function Analytics() {
       <div className="cards">
         <div className="card">
           <label className="numberLabel">
-          <CountUp className="number" end={100} />+</label>
+          <CountUp className="number" end={tagCount} />+</label>
           <p className="name">Number of Tags</p>
         </div>
 
         <div className="card">
           <label className="numberLabel">
-          <CountUp className="number" end={100} />+</label>
+          <CountUp className="number" end={projectCount} />+</label>
           <p className="name">Number of Projects</p>
         </div>
 
         <div className="card">
           <label className="numberLabel">
-          <CountUp className="number" end={100} />+</label>
+          <CountUp className="number" end={contributorsCount} />+</label>
           <p className="name">Number of Contributors</p>
         </div>
       </div>

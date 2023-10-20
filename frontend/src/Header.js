@@ -24,14 +24,10 @@ export default function Header() {
         
       </div>
       <div className="lowerNav">
-      
-        <p className="navlink"> <NavLink to="/"> Project Explorer </NavLink>  </p>
-        <p className="addProjectBtn navlink"> <NavLink to="/add-project"> 
-                             Add Project 
-                        </NavLink></p>
-        <p className="navlink"> <NavLink to="/about"> 
-                            About Us 
-                        </NavLink> </p>
+      <p className="navlink"> <NavLink to="/"> Dashboard </NavLink>  </p>     
+        <p className="navlink"> <NavLink to="/projects"> Project Explorer </NavLink>  </p>
+        <p className="addProjectBtn navlink"> <NavLink to="/add-project"> Add Project </NavLink></p>
+        <p className="navlink"> <NavLink to="/about"> About Us </NavLink> </p>
       </div>
     </div>
     );
