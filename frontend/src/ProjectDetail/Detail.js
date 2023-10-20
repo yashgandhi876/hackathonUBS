@@ -10,8 +10,12 @@ import {Card, Chip, IconButton, Button, Avatar, Divider} from '@mui/material';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import {Person} from "@mui/icons-material";
+import { useLocation } from 'react-router-dom';
 
-const Detail = ({project}) => {
+const Detail = () => {
+    const {state} = useLocation();
+    const {project} = state;
+    console.log(state);
     return(<div className='h-full'>
             <React.Fragment>
 
@@ -20,11 +24,11 @@ const Detail = ({project}) => {
                 <Grid container className=' rounded m-auto'>
                     <Grid item md={7} className='bg-[#e0ebeb]  rounded p-10 '>
                         <h1 className='text-2xl mt-2 font-medium'>
-                            {project.title}
+                            {project.name}
                         </h1>
                         <br/>
                         <h2 className=' mt-2 break-words text-base'>
-                            {project.description}
+                            {project.desc}
                         </h2>
                         <br/>
                         <div className='mt-2'>
@@ -39,7 +43,7 @@ const Detail = ({project}) => {
                                     <div className=''>
                                         {project.tags.map((tag,i) => {
                                             return(
-                                                <Chip label={tag} color={`${i % 2 === 1 ?'default':'error'}`} className="m-2 w-[100px]"/>
+                                                <Chip label={tag.name} color={`${i % 2 === 1 ?'default':'error'}`} className="m-2 w-[100px]"/>
                                             )
                                         })
 
@@ -67,7 +71,7 @@ const Detail = ({project}) => {
                             </div>
                             <div className='m-auto'>
                                 <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} className='max-h-full'>
-                                    {project.contributors.map((name)=>{ return(
+                                    {project.contributors.map((contributor)=>{ return(
 
                                         <ListItem alignItems="flex-start">
                                         <ListItemAvatar>
@@ -81,7 +85,7 @@ const Detail = ({project}) => {
                                               variant="body2"
                                               color="text.primary"
                                             >
-                                              <b>{name}</b>
+                                              <b>{contributor.name}</b>
                                             </Typography>
                                           </React.Fragment>}
                                           secondary={
@@ -94,7 +98,7 @@ const Detail = ({project}) => {
                                               >
                                                 AVP, Client Channel
                                               </Typography>
-                                              {" -- first.last@ubs.com"}
+                                              {" -- " + contributor.email}
                                             </React.Fragment>
                                           }
                                         />

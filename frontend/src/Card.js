@@ -40,7 +40,7 @@ const navigate = useNavigate();
         <button
 						type="button"
 						className="w-32 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white-900  rounded-lg border focus:z-10 focus:ring-4 bg-transparent hover:bg-gray-100  dark:hover:bg-gray-700  dark:hover:text-white"
-            onClick={()=> navigate('/show-project',props.project)}
+            onClick={()=> navigate('/show-project',{state: props})}
           >
 						More Details
 					</button>
