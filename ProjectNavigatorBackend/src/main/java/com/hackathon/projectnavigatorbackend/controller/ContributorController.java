@@ -17,18 +17,20 @@ public class ContributorController {
     @Autowired
     private ContributorService contributorService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/add-contributor")
     private HttpStatus saveContributor(@RequestBody Contributor contributor){
         contributorService.addContributor(contributor);
         return HttpStatus.OK;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get-contributors")
     private List<Contributor> getContributors(){
         return contributorService.getAllContributors();
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get-contributor/{email}")
     private Contributor getContributors(@PathVariable String email){
         return contributorService.getContributorByEmail(email);

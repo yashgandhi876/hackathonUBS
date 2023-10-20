@@ -1,0 +1,11 @@
+.searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.searchInput{
+    width: 400px;
+    padding: 5px;
+}

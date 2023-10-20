@@ -3,8 +3,8 @@ import Detail from './ProjectDetail/Detail';
 import AddProject from './AddProject';
 
 const project1 = {
-  title:'title1',
-  description:'sample project',
+  title:'DPB-UI',
+  description:'Stock trading application for clients of Credit SUisse where they can view their transactions and cash activities too',
   linkText: 'link to gitlab',
   image: "https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-54053.jpg?w=1800",
   imageText: "project Image",
@@ -24,9 +24,9 @@ const project1 = {
 
 function App() {
   return (
-  <div className="app">
-    <Detail project={project1}/>
-  </div>
+      <div className="app">
+        <Detail project={project1}/>
+      </div>
   );
 }
 export default App;
