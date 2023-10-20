@@ -13,4 +13,6 @@ public class Project {
     List<Tag> tags;
     List<Contributor> contributors;
     String repoLink;
+    String dl;
+    String owner;
 }
