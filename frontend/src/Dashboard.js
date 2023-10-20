@@ -11,14 +11,14 @@ export default function Dashboard() {
 
   const fetchData = async () => await axios.get("http://localhost:8080/get-projects").then((res) => {setProjects(res.data); setFilterProjects(res.data)})
 
-  useEffect(() => {fetchData()}, [])
+  //useEffect(() => {fetchData()}, [])
 
   useEffect(() => setFilterProjects(projects.filter(project => project.tags.some(tag => tag.name.includes(search)))), [search])
 
     return (
 		<div className="dashboard">
-      <div className="searchBar">
-        <input className="searchInput" placeholder="Search tags" type="text" style={{border: '1px solid black'}} value={search} onChange={(event)=> setSearch(event.target.value)} />
+      <div className="bar">
+        <input className="searchbar" placeholder="Search tags" type="text"  value={search} onChange={(event)=> setSearch(event.target.value)} />
       </div>
       <div className="grid gap-3 grid-cols-3 flex-wrap">
       {

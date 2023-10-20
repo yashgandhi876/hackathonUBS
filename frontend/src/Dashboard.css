@@ -1,11 +1,22 @@
-.searchBar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.searchInput{
-    width: 400px;
-    padding: 5px;
-}
+.bar{
+    margin:0 auto;
+    width:700px;
+    border-radius:30px;
+    border:1px solid #dcdcdc;
+    margin-top: 20px;
+  }
+  .bar:hover{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+  }
+  .bar:focus-within{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline:none;
+  }
+  .searchbar{
+    height:45px;
+    width:600px;
+    font-size:16px;
+    outline: none;
+    border-radius:30px;
+    padding:10px;
+  }

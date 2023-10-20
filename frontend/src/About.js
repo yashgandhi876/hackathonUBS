@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 export default function About() {
   return (
-    <div className='border-solid border-l-4 border-red-700 m-10 p-5'>
+    <div className='border-solid border-l-4  m-10 p-5' style={{borderLeftColor:'rgb(230,0,0)'}}>
       <Grid container md={12} className='gap-x-8'>
          <Grid item md={6} >
          <h1 className='font-medium text-3xl mb-10'>About US</h1>
