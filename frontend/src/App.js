@@ -1,6 +1,7 @@
 import './App.css';
 import Detail from './ProjectDetail/Detail';
 import AddProject from './AddProject';
+import About from './About';
 
 const project1 = {
   title:'DPB-UI',
@@ -25,7 +26,7 @@ const project1 = {
 function App() {
   return (
       <div className="app">
-        <Detail project={project1}/>
+       <About/>
       </div>
   );
 }
