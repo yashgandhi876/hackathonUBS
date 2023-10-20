@@ -35,4 +35,10 @@ public class ContributorController {
     private Contributor getContributors(@PathVariable String email){
         return contributorService.getContributorByEmail(email);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/get-contributors-count")
+    private int getContributorsCount(){
+        return contributorService.getAllContributors().size();
+    }
 }

@@ -68,7 +68,7 @@ const Detail = ({project}) => {
                             <div className='m-auto'>
                                 <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} className='max-h-full'>
                                     {project.contributors.map((name)=>{ return(
-                                        
+
                                         <ListItem alignItems="flex-start">
                                         <ListItemAvatar>
                                           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -108,24 +108,6 @@ const Detail = ({project}) => {
                         </div>
                     </Grid>
                 </Grid>
-
-                {/* <div className="flex w-full m-2 h-[300px]">
-
-        <div className="w-[40%] bg-[#DDE6ED] h-full ml-[5%] rounded">
-            <div className='w-[80%] text-center text-2xl bg-[#033f63] rounded m-auto my-2 text-white border-black border-1 p-1'>
-                Tags
-            </div>
-            <div className='flex items-stretch justify-center flex-wrap m-3'>
-                {project.tags.map((tag) => {
-                    return(
-                        <Chip label={tag} color="primary" className="m-2 w-[100px]"/>
-                    )
-                })
-
-                }
-            </div>
-        </div>
-    </div> */}
             </Card>
 
         </div>
