@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const fetchData = async () => await axios.get("http://localhost:8080/get-projects").then((res) => {setProjects(res.data); setFilterProjects(res.data)})
 
-  //useEffect(() => {fetchData()}, [])
+  useEffect(() => {fetchData()}, [])
 
   useEffect(() => setFilterProjects(projects.filter(project => project.tags.some(tag => tag.name.includes(search)))), [search])
 
